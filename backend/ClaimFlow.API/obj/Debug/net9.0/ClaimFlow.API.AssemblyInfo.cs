@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClaimFlow.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+347a3e90eb4aa6d6eb177d8ce397c136bb355387")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed93cbddbfffcbf66b20fcfa93154807d23df91b")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClaimFlow.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClaimFlow.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

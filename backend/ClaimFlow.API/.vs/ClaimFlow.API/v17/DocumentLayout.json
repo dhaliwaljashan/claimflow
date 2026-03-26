@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,13 +34,25 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TestController.cs",
+              "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Controllers\\TestController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TestController.cs",
+              "ToolTip": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Controllers\\TestController.cs",
+              "RelativeToolTip": "Controllers\\TestController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T00:24:21.632Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-25T23:48:54.596Z",
               "EditorCaption": ""

@@ -6,8 +6,10 @@ C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\bin\Debug\net9.0\ClaimFlo
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\bin\Debug\net9.0\ClaimFlow.API.runtimeconfig.json
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\bin\Debug\net9.0\ClaimFlow.API.dll
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\bin\Debug\net9.0\ClaimFlow.API.pdb
-C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\bin\Debug\net9.0\Microsoft.OpenApi.dll
+C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\ClaimFlow.API.csproj.AssemblyReference.cache
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\rpswa.dswa.cache.json
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\ClaimFlow.API.GeneratedMSBuildEditorConfig.editorconfig
@@ -16,6 +18,7 @@ C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\ClaimFlo
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\ClaimFlow.API.csproj.CoreCompileInputs.cache
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\ClaimFlow.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\ClaimFlow.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\ClaimFlow.API.sourcelink.json
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\rjimswa.dswa.cache.json
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
@@ -25,10 +28,10 @@ C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\staticwe
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\staticwebassets.build.endpoints.json
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\swae.build.ex.cache
-C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\ClaimFlo.93F1232C.Up2Date
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\ClaimFlow.API.dll
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\refint\ClaimFlow.API.dll
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\ClaimFlow.API.pdb
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\ClaimFlow.API.genruntimeconfig.cache
 C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\ref\ClaimFlow.API.dll
+C:\Users\jasha\Desktop\ClaimFlow\backend\ClaimFlow.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
