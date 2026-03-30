@@ -1,6 +1,6 @@
 ﻿namespace ClaimFlow.API.DTOs
 {
-    public class ClaimResponseDTO
+    public class ClaimResponseDto
     {
         public int ClaimId { get; set; }
         public string MemberId { get; set; } = string.Empty;

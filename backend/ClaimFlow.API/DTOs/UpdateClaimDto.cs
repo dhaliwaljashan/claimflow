@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Antiforgery;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ClaimFlow.API.DTOs
 {
-    public class CreateClaimDto
+    public class UpdateClaimDto
     {
         [Required]
         public string MemberId { get; set; } = string.Empty;
@@ -22,6 +21,7 @@ namespace ClaimFlow.API.DTOs
 
         [Required]
         public string Status { get; set; } = string.Empty;
+
         public DateTime SubmissionDate { get; set; }
         public bool IsInternal { get; set; }
         public int CreatedByUserId { get; set; }

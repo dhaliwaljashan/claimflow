@@ -10,6 +10,22 @@
         "tags": [
           "Claims"
         ],
+        "parameters": [
+          {
+            "name": "state",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -18,7 +34,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ClaimResponseDTO"
+                    "$ref": "#/components/schemas/ClaimResponseDto"
                   }
                 }
               },
@@ -26,7 +42,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ClaimResponseDTO"
+                    "$ref": "#/components/schemas/ClaimResponseDto"
                   }
                 }
               },
@@ -34,7 +50,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ClaimResponseDTO"
+                    "$ref": "#/components/schemas/ClaimResponseDto"
                   }
                 }
               }
@@ -50,17 +66,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateClaimDTO"
+                "$ref": "#/components/schemas/CreateClaimDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateClaimDTO"
+                "$ref": "#/components/schemas/CreateClaimDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateClaimDTO"
+                "$ref": "#/components/schemas/CreateClaimDto"
               }
             }
           }
@@ -71,17 +87,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClaimResponseDTO"
+                  "$ref": "#/components/schemas/ClaimResponseDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClaimResponseDTO"
+                  "$ref": "#/components/schemas/ClaimResponseDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClaimResponseDTO"
+                  "$ref": "#/components/schemas/ClaimResponseDto"
                 }
               }
             }
@@ -111,20 +127,98 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClaimResponseDTO"
+                  "$ref": "#/components/schemas/ClaimResponseDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClaimResponseDTO"
+                  "$ref": "#/components/schemas/ClaimResponseDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClaimResponseDTO"
+                  "$ref": "#/components/schemas/ClaimResponseDto"
                 }
               }
             }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Claims"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClaimDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClaimDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClaimDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Claims"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -144,7 +238,7 @@
   },
   "components": {
     "schemas": {
-      "ClaimResponseDTO": {
+      "ClaimResponseDto": {
         "type": "object",
         "properties": {
           "claimId": {
@@ -193,7 +287,56 @@
         },
         "additionalProperties": false
       },
-      "CreateClaimDTO": {
+      "CreateClaimDto": {
+        "required": [
+          "claimType",
+          "memberId",
+          "providerId",
+          "state",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "memberId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "providerId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "state": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "claimType": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "amount": {
+            "minimum": 0.01,
+            "type": "number",
+            "format": "double"
+          },
+          "status": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "submissionDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isInternal": {
+            "type": "boolean"
+          },
+          "createdByUserId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateClaimDto": {
         "required": [
           "claimType",
           "memberId",
