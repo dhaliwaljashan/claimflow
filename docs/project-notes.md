@@ -46,3 +46,10 @@
 - Added counts for total, pending, approved, and rejected claims
 - Added internal vs external claim counts
 - Added state-wise claim grouping for charts
+
+## Day 12
+- Set up frontend routing with React Router
+- Added main pages: Login, Dashboard, Claims, Create Claim
+- Added Navbar component for navigation
+- Added axios base client for backend API calls
+- Added basic AuthContext structure
