@@ -18,3 +18,10 @@
 - Implemented get errors by claim endpoint
 - Implemented update resolution status endpoint
 - Connected claim errors to existing claims
+
+## Day 8
+- Added authentication DTOs
+- Added password hashing helper
+- Configured JWT settings in appsettings.json
+- Added JWT authentication setup in Program.cs
+- Seeded sample users for login flow
