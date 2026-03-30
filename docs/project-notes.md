@@ -25,3 +25,10 @@
 - Configured JWT settings in appsettings.json
 - Added JWT authentication setup in Program.cs
 - Seeded sample users for login flow
+
+## Day 9
+- Added JWT token generation helper
+- Added AuthController with login endpoint
+- Implemented email and password verification
+- Returning JWT token and user details on successful login
+- Tested successful and failed login scenarios
