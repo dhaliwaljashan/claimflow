@@ -1,6 +1,7 @@
 ﻿using ClaimFlow.API.Data;
 using ClaimFlow.API.DTOs;
 using ClaimFlow.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace ClaimFlow.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class ClaimErrorsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

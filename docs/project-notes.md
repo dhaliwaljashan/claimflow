@@ -32,3 +32,10 @@
 - Implemented email and password verification
 - Returning JWT token and user details on successful login
 - Tested successful and failed login scenarios
+
+## Day 10
+- Protected Claims and Claim Errors APIs with JWT authentication
+- Restricted claim deletion to Admin role only
+- Configured Swagger to support Bearer token authorization
+- Tested login and protected endpoint flow
+- Verified role-based access control with Admin and Analyst users

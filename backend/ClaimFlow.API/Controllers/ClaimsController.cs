@@ -1,6 +1,7 @@
 ﻿using ClaimFlow.API.Data;
 using ClaimFlow.API.DTOs;
 using ClaimFlow.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace ClaimFlow.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class ClaimsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -172,6 +174,7 @@ namespace ClaimFlow.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteClaim(int id)
         {
             var claim = await _context.Claims.FindAsync(id);

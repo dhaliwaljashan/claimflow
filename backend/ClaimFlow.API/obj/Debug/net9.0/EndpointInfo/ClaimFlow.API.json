@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.4",
   "info": {
-    "title": "ClaimFlow.API",
-    "version": "1.0"
+    "title": "ClaimFlow API",
+    "version": "v1"
   },
   "paths": {
     "/api/Auth/login": {
@@ -723,6 +723,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Enter JWT token like this: Bearer {your token}",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }
