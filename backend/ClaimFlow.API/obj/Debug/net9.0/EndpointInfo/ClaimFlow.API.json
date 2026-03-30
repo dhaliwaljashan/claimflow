@@ -5,6 +5,162 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/ClaimErrors/by-claim/{claimId}": {
+      "get": {
+        "tags": [
+          "ClaimErrors"
+        ],
+        "parameters": [
+          {
+            "name": "claimId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClaimErrorResponseDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClaimErrorResponseDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClaimErrorResponseDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ClaimErrors": {
+      "post": {
+        "tags": [
+          "ClaimErrors"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateClaimErrorDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateClaimErrorDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateClaimErrorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimErrorResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimErrorResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ClaimErrors/{id}/resolution-status": {
+      "put": {
+        "tags": [
+          "ClaimErrors"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateResolutionStatusDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateResolutionStatusDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateResolutionStatusDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimErrorResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimErrorResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Claims": {
       "get": {
         "tags": [
@@ -238,6 +394,40 @@
   },
   "components": {
     "schemas": {
+      "ClaimErrorResponseDto": {
+        "type": "object",
+        "properties": {
+          "claimErrorId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "claimId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorType": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "resolutionStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "ClaimResponseDto": {
         "type": "object",
         "properties": {
@@ -336,6 +526,39 @@
         },
         "additionalProperties": false
       },
+      "CreateClaimErrorDto": {
+        "required": [
+          "claimId",
+          "description",
+          "errorCode",
+          "errorType",
+          "resolutionStatus"
+        ],
+        "type": "object",
+        "properties": {
+          "claimId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errorCode": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "errorType": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "resolutionStatus": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdateClaimDto": {
         "required": [
           "claimType",
@@ -381,6 +604,19 @@
           "createdByUserId": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateResolutionStatusDto": {
+        "required": [
+          "resolutionStatus"
+        ],
+        "type": "object",
+        "properties": {
+          "resolutionStatus": {
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false

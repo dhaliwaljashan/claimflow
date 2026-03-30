@@ -3,24 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\controllers\\claimerrorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:controllers\\claimerrorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\dtos\\claimerrorresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:dtos\\claimerrorresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\dtos\\updateresolutionstatusdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:dtos\\updateresolutionstatusdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\dtos\\claimresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:dtos\\claimresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\controllers\\claimscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:controllers\\claimscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\models\\claim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:models\\claim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\dtos\\createclaimerrordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:dtos\\createclaimerrordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\dtos\\createclaimdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:dtos\\createclaimdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\dtos\\updateclaimdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:dtos\\updateclaimdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\models\\claim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:models\\claim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\dtos\\claimresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:dtos\\claimresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\dtos\\updateclaimdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|solutionrelative:dtos\\updateclaimdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C7091D2F-D560-4A15-94A8-2FE9CEBCACAE}|ClaimFlow.API.csproj|c:\\users\\jasha\\desktop\\claimflow\\backend\\claimflow.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,21 +78,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UpdateClaimDto.cs",
-              "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\DTOs\\UpdateClaimDto.cs",
-              "RelativeDocumentMoniker": "DTOs\\UpdateClaimDto.cs",
-              "ToolTip": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\DTOs\\UpdateClaimDto.cs",
-              "RelativeToolTip": "DTOs\\UpdateClaimDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T00:03:28.44Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -91,7 +94,71 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClaimErrorsController.cs",
+              "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Controllers\\ClaimErrorsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ClaimErrorsController.cs",
+              "ToolTip": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Controllers\\ClaimErrorsController.cs",
+              "RelativeToolTip": "Controllers\\ClaimErrorsController.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAowGwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-30T01:40:54.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UpdateResolutionStatusDto.cs",
+              "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\DTOs\\UpdateResolutionStatusDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\UpdateResolutionStatusDto.cs",
+              "ToolTip": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\DTOs\\UpdateResolutionStatusDto.cs",
+              "RelativeToolTip": "DTOs\\UpdateResolutionStatusDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-30T01:28:52.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ClaimErrorResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\DTOs\\ClaimErrorResponseDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\ClaimErrorResponseDto.cs",
+              "ToolTip": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\DTOs\\ClaimErrorResponseDto.cs",
+              "RelativeToolTip": "DTOs\\ClaimErrorResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-30T01:28:19.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CreateClaimErrorDto.cs",
+              "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\DTOs\\CreateClaimErrorDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\CreateClaimErrorDto.cs",
+              "ToolTip": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\DTOs\\CreateClaimErrorDto.cs",
+              "RelativeToolTip": "DTOs\\CreateClaimErrorDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-30T01:27:32.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UpdateClaimDto.cs",
+              "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\DTOs\\UpdateClaimDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\UpdateClaimDto.cs",
+              "ToolTip": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\DTOs\\UpdateClaimDto.cs",
+              "RelativeToolTip": "DTOs\\UpdateClaimDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-30T00:03:28.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Claim.cs",
               "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Models\\Claim.cs",
               "RelativeDocumentMoniker": "Models\\Claim.cs",
@@ -99,25 +166,24 @@
               "RelativeToolTip": "Models\\Claim.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAqwAYAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-28T03:33:14.581Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-28T03:33:14.581Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "ClaimsController.cs",
               "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Controllers\\ClaimsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ClaimsController.cs",
               "ToolTip": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Controllers\\ClaimsController.cs",
               "RelativeToolTip": "Controllers\\ClaimsController.cs",
-              "ViewState": "AgIAALMAAAAAAAAAAAAAwL0AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAowBcAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-28T15:18:58.544Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "ClaimResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\DTOs\\ClaimResponseDto.cs",
               "RelativeDocumentMoniker": "DTOs\\ClaimResponseDto.cs",
@@ -130,20 +196,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "CreateClaimDto.cs",
               "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\DTOs\\CreateClaimDto.cs",
               "RelativeDocumentMoniker": "DTOs\\CreateClaimDto.cs",
               "ToolTip": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\DTOs\\CreateClaimDto.cs",
               "RelativeToolTip": "DTOs\\CreateClaimDto.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAYwBQAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-28T15:06:07.837Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -155,7 +221,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
@@ -167,7 +233,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "AuditLog.cs",
               "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Models\\AuditLog.cs",
               "RelativeDocumentMoniker": "Models\\AuditLog.cs",
@@ -179,7 +245,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "StateRule.cs",
               "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Models\\StateRule.cs",
               "RelativeDocumentMoniker": "Models\\StateRule.cs",
@@ -191,7 +257,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "ClaimError.cs",
               "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Models\\ClaimError.cs",
               "RelativeDocumentMoniker": "Models\\ClaimError.cs",
@@ -203,7 +269,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
@@ -215,7 +281,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "TestController.cs",
               "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Controllers\\TestController.cs",
               "RelativeDocumentMoniker": "Controllers\\TestController.cs",
@@ -227,7 +293,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
