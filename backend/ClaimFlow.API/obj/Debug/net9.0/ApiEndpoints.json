@@ -239,13 +239,23 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ClaimFlow.API.Controllers.TestController",
-    "Method": "Get",
-    "RelativePath": "api/Test",
+    "ContainingType": "ClaimFlow.API.Controllers.DashboardController",
+    "Method": "GetSummary",
+    "RelativePath": "api/Dashboard/summary",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "ClaimFlow.API.DTOs.DashboardSummaryDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

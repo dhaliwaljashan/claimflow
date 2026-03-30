@@ -51,6 +51,7 @@ builder.Services.AddSwaggerGen(options =>
         Title = "ClaimFlow API"
     });
     
+    // How login works
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -61,6 +62,7 @@ builder.Services.AddSwaggerGen(options =>
         Description = "Enter JWT token like this: Bearer {your token}"
         });
 
+    // Use this login for requests
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {

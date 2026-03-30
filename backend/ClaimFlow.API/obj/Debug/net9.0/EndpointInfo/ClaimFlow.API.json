@@ -427,14 +427,31 @@
         }
       }
     },
-    "/api/Test": {
+    "/api/Dashboard/summary": {
       "get": {
         "tags": [
-          "Test"
+          "Dashboard"
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardSummaryDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardSummaryDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardSummaryDto"
+                }
+              }
+            }
           }
         }
       }
@@ -607,6 +624,43 @@
         },
         "additionalProperties": false
       },
+      "DashboardSummaryDto": {
+        "type": "object",
+        "properties": {
+          "totalClaims": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "approvedClaims": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rejectedClaims": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pendingClaims": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "internalClaims": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "externalClaims": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "claimsByState": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StateClaimCountDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "LoginRequestDto": {
         "required": [
           "email",
@@ -635,6 +689,20 @@
           },
           "user": {
             "$ref": "#/components/schemas/UserResponseDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StateClaimCountDto": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

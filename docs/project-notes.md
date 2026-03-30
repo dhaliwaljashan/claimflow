@@ -39,3 +39,10 @@
 - Configured Swagger to support Bearer token authorization
 - Tested login and protected endpoint flow
 - Verified role-based access control with Admin and Analyst users
+
+## Day 11
+- Added Dashboard module
+- Implemented summary endpoint with key claim metrics
+- Added counts for total, pending, approved, and rejected claims
+- Added internal vs external claim counts
+- Added state-wise claim grouping for charts
