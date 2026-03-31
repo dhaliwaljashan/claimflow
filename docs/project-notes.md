@@ -53,3 +53,11 @@
 - Added Navbar component for navigation
 - Added axios base client for backend API calls
 - Added basic AuthContext structure
+
+## Day 13
+- Implemented frontend login form
+- Connected React frontend to backend login API
+- Stored JWT token and user data in localStorage
+- Added login and logout functions in AuthContext
+- Redirected users to dashboard after successful login
+- Displayed login error for invalid credentials
