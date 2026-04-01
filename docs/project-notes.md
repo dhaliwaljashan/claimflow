@@ -68,3 +68,9 @@
 - Redirected unauthenticated users to login
 - Redirected logged-in users away from login page
 - Added auth-based redirect for root route
+
+## Day 15
+- Connected Claims page to backend API
+- Implemented claims list display in table
+- Added loading, error, and empty states
+- Successfully fetched and displayed real data from database

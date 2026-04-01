@@ -6,14 +6,21 @@ const AuthContext = createContext();
 export function AuthProvider({ children }) {
   // Stores currently logged-in user
   const [user, setUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
 
   // On app load, check if user exists in localStorage
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+    try {
+      const storedUser = localStorage.getItem("user");
 
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    } catch (error) {
+      console.error("Failed to parse user from localStorage:", error);
+    } finally {
+      setAuthLoading(false);
+    } 
   }, []);
 
   // Called after successful login
@@ -32,7 +39,7 @@ export function AuthProvider({ children }) {
 
   return (
     // Provide auth state and functions to entire app
-    <AuthContext.Provider value={{ user, setUser, login, logout }}>
+    <AuthContext.Provider value={{ user, setUser, login, logout, authLoading }}>
       {children}
     </AuthContext.Provider>
   );

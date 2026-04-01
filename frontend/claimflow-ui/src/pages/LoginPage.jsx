@@ -15,13 +15,6 @@ function LoginPage() {
 
   const [error, setError] = useState("");       // store error message
   const [loading, setLoading] = useState(false);  // loading state for button
-
-  useEffect(() => {
-    // If user is already logged in, redirect to dashboard
-    if (user) {
-      navigate("/dashboard");
-    }
-  }, [user, navigate]);
   
   // update form values when user types
   const handleChange = (e) => {

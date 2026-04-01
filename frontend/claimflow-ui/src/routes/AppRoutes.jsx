@@ -10,8 +10,12 @@ import { use } from "react";
 
 function AppLayout() {
   const location = useLocation();
-  const { user } = useAuth();
+  const { user, authLoading } = useAuth();
 
+  if (authLoading) {
+    return <p style={{ padding: "20px" }}>Loading...</p>;
+  }
+  
   const hideNavbar = location.pathname === "/login"; // hide navbar on login page
 
   return (
