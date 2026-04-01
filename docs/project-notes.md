@@ -74,3 +74,10 @@
 - Implemented claims list display in table
 - Added loading, error, and empty states
 - Successfully fetched and displayed real data from database
+
+## Day 16
+- Implemented Create Claim frontend form
+- Connected create form to backend claims API
+- Added basic client-side validation
+- Redirected to Claims page after successful creation
+- Verified new claims appear in claims list
