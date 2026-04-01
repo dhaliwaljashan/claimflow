@@ -251,8 +251,7 @@
               "RelativeToolTip": "Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T16:04:55.855Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-30T16:04:55.855Z"
             },
             {
               "$type": "Document",
@@ -406,7 +405,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\jasha\\Desktop\\ClaimFlow\\backend\\ClaimFlow.API\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAIwGcAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAIwGoAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-25T23:48:54.596Z",
               "EditorCaption": ""

@@ -61,3 +61,10 @@
 - Added login and logout functions in AuthContext
 - Redirected users to dashboard after successful login
 - Displayed login error for invalid credentials
+
+## Day 14
+- Added ProtectedRoute component
+- Protected dashboard, claims, and create claim pages
+- Redirected unauthenticated users to login
+- Redirected logged-in users away from login page
+- Added auth-based redirect for root route

@@ -4,21 +4,52 @@ import DashboardPage from "../pages/DashboardPage";
 import ClaimsPage from "../pages/ClaimsPage";
 import CreateClaimPage from "../pages/CreateClaimPage";
 import LoginPage from "../pages/LoginPage";
+import { useAuth } from "../context/AuthContext";
+import ProtectedRoute from "./ProtectedRoute";
 import { use } from "react";
 
 function AppLayout() {
   const location = useLocation();
+  const { user } = useAuth();
+
   const hideNavbar = location.pathname === "/login"; // hide navbar on login page
 
   return (
   <>
     {!hideNavbar && <Navbar />}
     <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/claims" element={<ClaimsPage />} />
-        <Route path="/claims/create" element={<CreateClaimPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route 
+          path="/" 
+          element={<Navigate to={user ? "/dashboard" : "/login"} replace />}   // redirects based on auth status
+        />
+        <Route 
+          path="/login" 
+          element={user ? <Navigate to="/dashboard" replace /> : <LoginPage />} // login redirects to dashboard if already logged in
+        />
+        <Route
+          path="/dashboard" 
+          element={
+          <ProtectedRoute>
+            <DashboardPage />
+          </ProtectedRoute>
+        }
+        />
+        <Route 
+          path="/claims" 
+          element={
+          <ProtectedRoute>
+            <ClaimsPage />
+          </ProtectedRoute>
+        }
+        />
+        <Route 
+          path="/claims/create" 
+          element={
+          <ProtectedRoute>
+            <CreateClaimPage />
+          </ProtectedRoute>
+        } 
+        />
     </Routes>
     </>
   );
