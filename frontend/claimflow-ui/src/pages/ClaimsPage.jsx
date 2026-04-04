@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 import api from "../api/axios";
 
 function ClaimsPage() {
@@ -52,6 +53,7 @@ useEffect(() => {
            <th style={thStyle}>Amount</th>
            <th style={thStyle}>Status</th>
            <th style={thStyle}>Internal</th>
+           <th style={thStyle}>Details</th>
           </tr>
         </thead>
         <tbody>
@@ -64,7 +66,10 @@ useEffect(() => {
               <td style={tdStyle}>{claim.claimType}</td>
               <td style={tdStyle}>${claim.amount.toFixed(2)}</td>
               <td style={tdStyle}>{claim.status}</td>
-              <td style={tdStyle}>{claim.isInternal ? "Yes" : "No"}</td>     
+              <td style={tdStyle}>{claim.isInternal ? "Yes" : "No"}</td>   
+              <td style={tdStyle}>
+                <Link to={`/claims/${claim.claimId}`}> View Details </Link>
+              </td>  
             </tr>
           ))}
         </tbody>

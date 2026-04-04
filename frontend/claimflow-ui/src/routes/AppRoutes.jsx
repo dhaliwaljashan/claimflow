@@ -3,9 +3,11 @@ import Navbar from "../components/Navbar";
 import DashboardPage from "../pages/DashboardPage";
 import ClaimsPage from "../pages/ClaimsPage";
 import CreateClaimPage from "../pages/CreateClaimPage";
+import ClaimDetailsPage from "../pages/ClaimDetailsPage";
 import LoginPage from "../pages/LoginPage";
 import { useAuth } from "../context/AuthContext";
 import ProtectedRoute from "./ProtectedRoute";
+
 import { use } from "react";
 
 function AppLayout() {
@@ -53,6 +55,14 @@ function AppLayout() {
             <CreateClaimPage />
           </ProtectedRoute>
         } 
+        />
+        <Route
+          path="/claims/:id"
+          element={
+            <ProtectedRoute>
+              <ClaimDetailsPage />
+            </ProtectedRoute>
+          }
         />
     </Routes>
     </>

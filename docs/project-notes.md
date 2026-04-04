@@ -88,3 +88,10 @@
 - Implemented bar chart for claims by state using Recharts
 - Implemented pie chart for internal vs external claims
 - Added loading and error handling for dashboard
+
+## Day 18
+- Added Claim Details page
+- Integrated claim details and claim errors APIs
+- Added ability to create claim errors from frontend
+- Added ability to update claim error resolution status
+- Linked Claims page to Claim Details page
