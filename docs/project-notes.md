@@ -95,3 +95,10 @@
 - Added ability to create claim errors from frontend
 - Added ability to update claim error resolution status
 - Linked Claims page to Claim Details page
+
+## Day 19
+- Added filter functionality to Claims page
+- Implemented filtering by state and status
+- Connected filters to backend query parameters
+- Added reset functionality for filters
+- Improved claims browsing experience
