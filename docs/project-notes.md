@@ -81,3 +81,10 @@
 - Added basic client-side validation
 - Redirected to Claims page after successful creation
 - Verified new claims appear in claims list
+
+## Day 17
+- Connected Dashboard page to backend API
+- Displayed KPI cards for claims summary
+- Implemented bar chart for claims by state using Recharts
+- Implemented pie chart for internal vs external claims
+- Added loading and error handling for dashboard

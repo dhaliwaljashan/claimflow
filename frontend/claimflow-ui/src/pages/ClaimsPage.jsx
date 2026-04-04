@@ -64,7 +64,8 @@ useEffect(() => {
               <td style={tdStyle}>{claim.claimType}</td>
               <td style={tdStyle}>${claim.amount.toFixed(2)}</td>
               <td style={tdStyle}>{claim.status}</td>
-              <td style={tdStyle}>{claim.isInternal ? "Yes" : "No"}</td>            </tr>
+              <td style={tdStyle}>{claim.isInternal ? "Yes" : "No"}</td>     
+            </tr>
           ))}
         </tbody>
       </table>  
