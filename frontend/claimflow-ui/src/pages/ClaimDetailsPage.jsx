@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {Link} from "react-router-dom";
 import api from "../api/axios";
 
 function ClaimDetailsPage() {
@@ -111,6 +112,12 @@ return (
                 <p><strong>Amount:</strong> ${Number(claim.amount).toFixed(2)}</p>
                 <p><strong>Status:</strong> {claim.status}</p>
                 <p><strong>Internal:</strong> {claim.isInternal ? "Yes" : "No"}</p>
+
+                <div style={{marginTop : "15px"}}>
+                    <Link to ={`/claims/edit/${claim.claimId}`} style={linkButtonStyle}>
+                    Edit Claim
+                    </Link>
+                </div>
             </div>
         )}
 
@@ -258,6 +265,15 @@ const thStyle = {
 const tdStyle = {
     padding: "10px",
     border: "1px solid #ccc"
+};
+
+const linkButtonStyle = {
+  display: "inline-block",
+  padding: "10px 16px",
+  backgroundColor: "#2563eb",
+  color: "white",
+  textDecoration: "none",
+  borderRadius: "6px"
 };
 
 export default ClaimDetailsPage;

@@ -5,6 +5,7 @@ import ClaimsPage from "../pages/ClaimsPage";
 import CreateClaimPage from "../pages/CreateClaimPage";
 import ClaimDetailsPage from "../pages/ClaimDetailsPage";
 import LoginPage from "../pages/LoginPage";
+import EditClaimPage from "../pages/EditClaimPage";
 import { useAuth } from "../context/AuthContext";
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -61,6 +62,14 @@ function AppLayout() {
           element={
             <ProtectedRoute>
               <ClaimDetailsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/claims/edit/:id"
+          element={
+            <ProtectedRoute>
+              <EditClaimPage />
             </ProtectedRoute>
           }
         />

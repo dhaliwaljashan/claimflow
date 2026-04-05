@@ -102,3 +102,10 @@
 - Connected filters to backend query parameters
 - Added reset functionality for filters
 - Improved claims browsing experience
+
+## Day 20
+- Added Edit Claim page
+- Prefilled claim data from backend
+- Connected frontend update flow to PUT claims API
+- Added Edit Claim navigation from Claim Details page
+- Redirected back to claim details after successful update
