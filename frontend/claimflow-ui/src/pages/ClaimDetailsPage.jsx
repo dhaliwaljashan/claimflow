@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import {Link} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import api from "../api/axios";
 
 function ClaimDetailsPage() {
     const { id } = useParams(); // get claim ID from URL
+    const navigate = useNavigate();
+    const {user} = useAuth();
 
     const [claim, setClaim] = useState(null);
     const [loading, setLoading] = useState(true);
     const [errors, setErrors] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [deleting, setDeleting] = useState(false);
 
     const [newError, setNewError] = useState({
         errorCode: "",
@@ -91,6 +94,30 @@ const handleResolutionChange = async (claimErrorId, resolutionStatus) => {
     }
 };
 
+const handleDeleteClaim = async () => {
+    const confirmed = window.confirm(
+        "Are you sure you want to delete this claim? This action cannot be undone."
+    );
+
+    if(!confirmed) {
+        return;
+    }
+
+    setErrorMessage("");
+    setDeleting(true);
+
+    try{
+        await api.delete(`/claims/${id}`);
+        navigate("/claims");
+    } catch (err) {
+        setErrorMessage(
+            err.response?.data?.message || "Failed to delete claim."
+        );
+    } finally {
+        setDeleting(false);
+    }
+};
+
 if (loading) {
     return <p style={{ padding: "20px" }}>Loading claim details...</p>;
 }
@@ -113,10 +140,20 @@ return (
                 <p><strong>Status:</strong> {claim.status}</p>
                 <p><strong>Internal:</strong> {claim.isInternal ? "Yes" : "No"}</p>
 
-                <div style={{marginTop : "15px"}}>
+                <div style={{ marginTop: "15px", display: "flex", gap: "10px" }}>
                     <Link to ={`/claims/edit/${claim.claimId}`} style={linkButtonStyle}>
                     Edit Claim
                     </Link>
+
+                    {user?.role === "Admin" && (
+                        <button
+                            onClick={handleDeleteClaim}
+                            disabled={deleting}
+                            style={deleteButtonStyle}
+                        >
+                            {deleting ? "Deleting..." : "Delete Claim"}
+                        </button>
+                    )}
                 </div>
             </div>
         )}
@@ -274,6 +311,15 @@ const linkButtonStyle = {
   color: "white",
   textDecoration: "none",
   borderRadius: "6px"
+};
+
+const deleteButtonStyle = {
+  padding: "10px 16px",
+  backgroundColor: "#dc2626",
+  color: "white",
+  border: "none",
+  borderRadius: "6px",
+  cursor: "pointer"
 };
 
 export default ClaimDetailsPage;

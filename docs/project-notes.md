@@ -109,3 +109,10 @@
 - Connected frontend update flow to PUT claims API
 - Added Edit Claim navigation from Claim Details page
 - Redirected back to claim details after successful update
+
+## Day 21
+- Added Delete Claim action on Claim Details page
+- Restricted delete button visibility to Admin users only
+- Added confirmation before deleting a claim
+- Connected frontend delete action to backend delete API
+- Redirected to claims list after successful deletion
