@@ -116,3 +116,14 @@
 - Added confirmation before deleting a claim
 - Connected frontend delete action to backend delete API
 - Redirected to claims list after successful deletion
+
+## Day 22
+- Improved Create Claim and Edit Claim form layout
+- Moved shared dropdown options into a utility file
+- Made Created By User ID read-only
+- Improved claims filter UX with dropdowns
+
+## Day 23
+- Polished dashboard layout
+- Simplified pie chart setup using fill values in pieData
+- Kept dashboard navigation simple using existing navbar

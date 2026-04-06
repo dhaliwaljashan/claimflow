@@ -20,10 +20,28 @@ namespace ClaimFlow.API.Controllers
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ClaimResponseDto>>> GetClaims(
+            [FromQuery] int? claimId,
+            [FromQuery] string? memberId,
+            [FromQuery] string? providerId,
             [FromQuery] string? state,
             [FromQuery] string? status)
         {
             var query = _context.Claims.AsQueryable();
+
+            if (claimId.HasValue)
+            {
+                query = query.Where(c => c.ClaimId == claimId.Value);
+            }
+
+            if (!string.IsNullOrWhiteSpace(memberId))
+            {
+                query = query.Where(c => c.MemberId.Contains(memberId));
+            }
+
+            if (!string.IsNullOrWhiteSpace(providerId))
+            {
+                query = query.Where(c => c.ProviderId.Contains(providerId));
+            }
 
             if (!string.IsNullOrWhiteSpace(state))
             {

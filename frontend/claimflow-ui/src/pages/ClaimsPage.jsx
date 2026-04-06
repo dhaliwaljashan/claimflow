@@ -1,8 +1,10 @@
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {Link} from "react-router-dom";
 import {useAuth} from "../context/AuthContext";
 import { STATE_OPTIONS, STATUS_OPTIONS } from "../utils/claimOptions";
 import api from "../api/axios";
+
+const ITEMS_PER_PAGE = 5;
 
 function ClaimsPage() {
   const [claims, setClaims] = useState([]);
@@ -11,10 +13,15 @@ function ClaimsPage() {
   const {user} = useAuth();
 
   const [filters, setFilters] = useState({
+    claimId: "",
+    memberId: "",
+    providerId: "",
     state: "",
     status: ""
   });
   
+  const [currentPage, setCurrentPage] = useState(1);
+
   const fetchClaims = async (appliedFilters = filters) => {
     setLoading(true);
     setError("");
@@ -22,8 +29,25 @@ function ClaimsPage() {
   try {
     const queryParams = new URLSearchParams(); // creates an object to build query string for API request
     
-    if (appliedFilters.state) queryParams.append("state", appliedFilters.state);
-    if (appliedFilters.status) queryParams.append("status", appliedFilters.status);
+    if (appliedFilters.claimId) {
+        queryParams.append("claimId", appliedFilters.claimId);
+    }
+
+      if (appliedFilters.memberId) {
+        queryParams.append("memberId", appliedFilters.memberId);
+      }
+
+      if (appliedFilters.providerId) {
+        queryParams.append("providerId", appliedFilters.providerId);
+      }
+
+      if (appliedFilters.state) {
+        queryParams.append("state", appliedFilters.state);
+      }
+
+      if (appliedFilters.status) {
+        queryParams.append("status", appliedFilters.status);
+      }
 
     const url = queryParams.toString() ? `/claims?${queryParams.toString()}` : "/claims";
     
@@ -79,6 +103,13 @@ const handleDeleteClaim  = async (claimId) => {
   }
 };
 
+const paginatedClaims = useMemo(() => {  // Recalculate only when claims or page changes”
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  return claims.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+}, [claims, currentPage]);
+
+const totalPages = Math.ceil(claims.length / ITEMS_PER_PAGE);
+
 if (loading) {
      return <p style={{ padding: "20px" }}>Loading claims...</p>;
 }
@@ -103,113 +134,177 @@ const getStatusStyle = (status) => {
         {/* Filter Section */}
         <div style = {filterContainerStyle}>
           <div style={filterFieldStyle}>
-            <label>State</label>
-            <select
-              name="state"
-              value={filters.state}
+            <label>Claim ID</label>
+            <input
+              type="number"
+              name="claimId"
+              value={filters.claimId}
               onChange={handleFilterChange}
-              placeholder="Enter state"
+              placeholder="Search by Claim ID"
               style={inputStyle}
-            >
-              <option value="">All</option>
-                {STATE_OPTIONS.map((state) => (
-                  <option key={state} value={state}>
-                    {state}
-                  </option>
-                ))}
-            </select>
+            />
           </div>
 
           <div style={filterFieldStyle}>
-            <label>Status</label>
-            <select
-              name="status"
-              value={filters.status}
-              onChange={handleFilterChange}
-              style={inputStyle}
-            >
-              <option value="">All</option>
-              {STATUS_OPTIONS.map((status) => (
-                <option key={status} value={status}>
-                  {status}
-                </option>
-              ))}           
-            </select>
-          </div>
-
-          <div style={{ display: "flex", alignItems: "end", gap: "10px" }}>
-            <button onClick={handleApplyFilters} style={buttonStyle}>
-              Apply Filters
-            </button>
-            <button onClick={handleResetFilters} style={buttonStyle}>
-              Reset Filters
-            </button>
-          </div>
+          <label>Member ID</label>
+          <input
+            type="text"
+            name="memberId"
+            value={filters.memberId}
+            onChange={handleFilterChange}
+            placeholder="Search by member ID"
+            style={inputStyle}
+          />
         </div>
 
-        {error && (
-          <p style={{ color: "red", padding: "10px" }}>
-            {error}
-          </p>
-        )}
+        <div style={filterFieldStyle}>
+          <label>Provider ID</label>
+          <input
+            type="text"
+            name="providerId"
+            value={filters.providerId}
+            onChange={handleFilterChange}
+            placeholder="Search by provider ID"
+            style={inputStyle}
+          />
+        </div>
 
-        {!loading && claims.length === 0 ? (
-          <p style={{ padding: "20px" }}>No claims found.</p>
-        ) : (
-          <table style={{
+        <div style={filterFieldStyle}>
+          <label>State</label>
+          <select
+            name="state"
+            value={filters.state}
+            onChange={handleFilterChange}
+            placeholder="Enter state"
+            style={inputStyle}
+          >
+            <option value="">All</option>
+              {STATE_OPTIONS.map((state) => (
+                <option key={state} value={state}>
+                  {state}
+                </option>
+              ))}
+          </select>
+        </div>
+
+        <div style={filterFieldStyle}>
+          <label>Status</label>
+          <select
+            name="status"
+            value={filters.status}
+            onChange={handleFilterChange}
+            style={inputStyle}
+          >
+            <option value="">All</option>
+            {STATUS_OPTIONS.map((status) => (
+              <option key={status} value={status}>
+                {status}
+              </option>
+            ))}           
+          </select>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "end", gap: "10px" }}>
+          <button onClick={handleApplyFilters} style={buttonStyle}>
+            Apply Filters
+          </button>
+          <button onClick={handleResetFilters} style={buttonStyle}>
+            Reset Filters
+          </button>
+        </div>
+      </div>
+
+      {error && (
+        <p style={{ color: "red", padding: "10px" }}>
+          {error}
+        </p>
+      )}
+
+      {!loading && claims.length === 0 ? (
+        <p style={{ padding: "20px" }}>No claims found.</p>
+      ) : (
+      <>
+        <table style={{
           width: "100%",
           borderCollapse: "collapse",
           marginTop: "20px"
         }}
         >
-        <thead>
-          <tr style={{ backgroundColor: "#e5e7eb" }}>
-           <th style={thStyle}>ID</th>
-           <th style={thStyle}>Member</th>
-           <th style={thStyle}>Provider</th>
-           <th style={thStyle}>State</th>
-           <th style={thStyle}>Type</th>
-           <th style={thStyle}>Amount</th>
-           <th style={thStyle}>Status</th>
-           <th style={thStyle}>Internal</th>
-           <th style={thStyle}>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {claims.map((claim) => (
-            <tr key={claim.claimId} style={rowStyle}>
-              <td style={tdStyle}>{claim.claimId}</td>
-              <td style={tdStyle}>{claim.memberId}</td>
-              <td style={tdStyle}>{claim.providerId}</td>
-              <td style={tdStyle}>{claim.state}</td>
-              <td style={tdStyle}>{claim.claimType}</td>
-              <td style={tdStyle}>${Number(claim.amount).toLocaleString()}</td>
-              <td style={tdStyle}>
-                <span style={{ ...statusBadgeStyle, ...getStatusStyle(claim.status) }}>
-                  {claim.status}
-                </span>
-              </td>
-              <td style={tdStyle}>{claim.isInternal ? "Yes" : "No"}</td>   
-              <td style={tdStyle}>
-                <div style={actionCellStyle}>
-                  <Link to={`/claims/${claim.claimId}`} style={actionLinkStyle}> View Details </Link>
-                  <Link to={`/claims/edit/${claim.claimId}`} style={actionLinkStyle}>Edit</Link>
-
-                  {user?.role === "Admin" && (
-                    <button
-                        onClick={() => handleDeleteClaim(claim.claimId)}
-                        style={tableDeleteButtonStyle}
-                    >
-                        Delete
-                    </button>
-                  )}
-                </div>
-              </td>  
+          <thead>
+            <tr style={{ backgroundColor: "#e5e7eb" }}>
+            <th style={thStyle}>ID</th>
+            <th style={thStyle}>Member</th>
+            <th style={thStyle}>Provider</th>
+            <th style={thStyle}>State</th>
+            <th style={thStyle}>Type</th>
+            <th style={thStyle}>Amount</th>
+            <th style={thStyle}>Status</th>
+            <th style={thStyle}>Internal</th>
+            <th style={thStyle}>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>  
+          </thead>
+          <tbody>
+            {paginatedClaims.map((claim) => (
+              <tr key={claim.claimId} style={rowStyle}>
+                <td style={tdStyle}>{claim.claimId}</td>
+                <td style={tdStyle}>{claim.memberId}</td>
+                <td style={tdStyle}>{claim.providerId}</td>
+                <td style={tdStyle}>{claim.state}</td>
+                <td style={tdStyle}>{claim.claimType}</td>
+                <td style={tdStyle}>${Number(claim.amount).toLocaleString()}</td>
+                <td style={tdStyle}>
+                  <span style={{ ...statusBadgeStyle, ...getStatusStyle(claim.status) }}>
+                    {claim.status}
+                  </span>
+                </td>
+                <td style={tdStyle}>{claim.isInternal ? "Yes" : "No"}</td>   
+                <td style={tdStyle}>
+                  <div style={actionCellStyle}>
+                    <Link to={`/claims/${claim.claimId}`} style={actionLinkStyle}> View Details </Link>
+                    <Link to={`/claims/edit/${claim.claimId}`} style={actionLinkStyle}>Edit</Link>
+
+                    {user?.role === "Admin" && (
+                      <button
+                          onClick={() => handleDeleteClaim(claim.claimId)}
+                          style={tableDeleteButtonStyle}
+                      >
+                          Delete
+                      </button>
+                    )}
+                  </div>
+                </td>  
+              </tr>
+            ))}
+          </tbody>
+        </table>  
+      
+        {totalPages > 1 && (
+          <div style={paginationRowStyle}>
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev-1, 1))}
+              disabled={currentPage === 1}
+              style={secondaryButtonStyle}
+            >
+              Previous
+            </button>
+
+            <span style={{alignSelf: "center"}}>
+              Page {currentPage} of {totalPages}
+            </span>
+
+            <button
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
+              disabled={currentPage ===totalPages}
+              style={secondaryButtonStyle}
+            >
+              Next
+            </button>
+          </div>
         )}
+      </>
+      )}
     </div>
   );
 }
@@ -302,6 +397,13 @@ const actionLinkStyle = {
 const rowStyle = {
   transition: "background 0.2s",
   cursor: "pointer"
+};
+
+const paginationRowStyle = {
+  display: "flex",
+  justifyContent: "flex-end",
+  gap: "12px",
+  marginTop: "16px"
 };
 
 export default ClaimsPage;
