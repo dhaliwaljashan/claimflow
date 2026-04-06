@@ -1,11 +1,14 @@
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import {useAuth} from "../context/AuthContext";
+import { STATE_OPTIONS, STATUS_OPTIONS } from "../utils/claimOptions";
 import api from "../api/axios";
 
 function ClaimsPage() {
   const [claims, setClaims] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const {user} = useAuth();
 
   const [filters, setFilters] = useState({
     state: "",
@@ -57,9 +60,41 @@ const handleResetFilters = () => {
   fetchClaims(resetFilters);
 }
 
-  if (loading) {
-     return <p style={{ padding: "20px" }}>Loading claims...</p>;
+const handleDeleteClaim  = async (claimId) => {
+  const confirmed = window.confirm(
+        "Are you sure you want to delete this claim? This action cannot be undone."
+    );
+
+  if(!confirmed) {
+      return;
   }
+
+  setError("");
+
+  try{
+    await api.delete(`/claims/${claimId}`);
+    fetchClaims(filters);
+  } catch(err) {
+    setError(err.response?.data?.message || "Failed to delete claim.");
+  }
+};
+
+if (loading) {
+     return <p style={{ padding: "20px" }}>Loading claims...</p>;
+}
+
+const getStatusStyle = (status) => {
+  switch(status) {
+    case "Pending":
+      return { backgroundColor: "#facc15", color: "#000" }; // yellow
+    case "Approved":
+      return { backgroundColor: "#22c55e", color: "#fff" }; // green
+    case "Rejected":
+      return { backgroundColor: "#ef4444", color: "#fff" }; // red
+    default:
+      return {};
+  }
+}
 
   return (
     <div style={{ padding: "20px" }}>
@@ -69,14 +104,20 @@ const handleResetFilters = () => {
         <div style = {filterContainerStyle}>
           <div style={filterFieldStyle}>
             <label>State</label>
-            <input
-              type="text"
+            <select
               name="state"
               value={filters.state}
               onChange={handleFilterChange}
               placeholder="Enter state"
               style={inputStyle}
-            />
+            >
+              <option value="">All</option>
+                {STATE_OPTIONS.map((state) => (
+                  <option key={state} value={state}>
+                    {state}
+                  </option>
+                ))}
+            </select>
           </div>
 
           <div style={filterFieldStyle}>
@@ -88,9 +129,11 @@ const handleResetFilters = () => {
               style={inputStyle}
             >
               <option value="">All</option>
-              <option value="Pending">Pending</option>
-              <option value="Approved">Approved</option>
-              <option value="Rejected">Rejected</option>
+              {STATUS_OPTIONS.map((status) => (
+                <option key={status} value={status}>
+                  {status}
+                </option>
+              ))}           
             </select>
           </div>
 
@@ -134,17 +177,33 @@ const handleResetFilters = () => {
         </thead>
         <tbody>
           {claims.map((claim) => (
-            <tr key={claim.claimId}>
+            <tr key={claim.claimId} style={rowStyle}>
               <td style={tdStyle}>{claim.claimId}</td>
               <td style={tdStyle}>{claim.memberId}</td>
               <td style={tdStyle}>{claim.providerId}</td>
               <td style={tdStyle}>{claim.state}</td>
               <td style={tdStyle}>{claim.claimType}</td>
-              <td style={tdStyle}>${claim.amount.toFixed(2)}</td>
-              <td style={tdStyle}>{claim.status}</td>
+              <td style={tdStyle}>${Number(claim.amount).toLocaleString()}</td>
+              <td style={tdStyle}>
+                <span style={{ ...statusBadgeStyle, ...getStatusStyle(claim.status) }}>
+                  {claim.status}
+                </span>
+              </td>
               <td style={tdStyle}>{claim.isInternal ? "Yes" : "No"}</td>   
               <td style={tdStyle}>
-                <Link to={`/claims/${claim.claimId}`}> View Details </Link>
+                <div style={actionCellStyle}>
+                  <Link to={`/claims/${claim.claimId}`} style={actionLinkStyle}> View Details </Link>
+                  <Link to={`/claims/edit/${claim.claimId}`} style={actionLinkStyle}>Edit</Link>
+
+                  {user?.role === "Admin" && (
+                    <button
+                        onClick={() => handleDeleteClaim(claim.claimId)}
+                        style={tableDeleteButtonStyle}
+                    >
+                        Delete
+                    </button>
+                  )}
+                </div>
               </td>  
             </tr>
           ))}
@@ -207,6 +266,42 @@ const thStyle = {
 const tdStyle = {
   padding: "10px",
   border: "1px solid #ccc"
+};
+
+const actionCellStyle = {
+  display: "flex",
+  gap: "10px",
+  alignItems: "center"
+};
+
+const tableDeleteButtonStyle = {
+  padding: "6px 10px",
+  backgroundColor: "#dc2626",
+  color: "white",
+  border: "none",
+  borderRadius: "6px",
+  cursor: "pointer",
+  fontSize: "13px"
+};
+
+const statusBadgeStyle = {
+  padding: "4px 10px",
+  borderRadius: "999px",
+  fontSize: "12px",
+  fontWeight: "600",
+  display: "inline-block"
+};
+
+const actionLinkStyle = {
+  textDecoration: "none",
+  color: "#2563eb",
+  fontWeight: "500",
+  fontSize: "14px"
+};
+
+const rowStyle = {
+  transition: "background 0.2s",
+  cursor: "pointer"
 };
 
 export default ClaimsPage;

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import {
   BarChart,
@@ -8,11 +9,12 @@ import {
   Tooltip,
   ResponsiveContainer,
   PieChart,
-  Pie,
-  Cell
+  Pie
 } from "recharts";
 
 function DashboardPage() {
+  const navigate = useNavigate();
+  
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -45,44 +47,72 @@ function DashboardPage() {
     return <p style={{ padding: "20px" }}>No dashboard data available.</p>;
   }
 
-  const pieData = [
-    {name: "Internal", value: data.internalClaims},
-    {name: "External", value: data.externalClaims}
-  ];
-
-  const COLORS = ["#2563eb", "#f59e0b"];  // COLORS is in capital bcz it is a constant and should not be changed
+ const pieData = [
+  { name: "Internal", value: data.internalClaims, fill: "#2563eb" },
+  { name: "External", value: data.externalClaims, fill: "#f59e0b" }
+];
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Dashboard</h2>
-
-      {/* KPI Cards */}
-      <div style={cardContainer}>
-        <Card title="Total Claims" value={data.totalClaims} />
-        <Card title="Approved Claims" value={data.approvedClaims} />
-        <Card title="Rejected Claims" value={data.rejectedClaims} />
-        <Card title="Pending Claims" value={data.pendingClaims} />
+    <div style={pageStyle}>
+      <div style={headerRowStyle}>
+      <div>
+        <h2 style={pageTitleStyle}>Dashboard</h2>
+        <p style={subTextStyle}>Overview of claims activity and status</p>
+      </div>
       </div>
 
+      {/* KPI summary cards */}
+      <div style={summaryGridStyle}>
+        <DashboardStatCard
+          title="Total Claims"
+          value={data.totalClaims}
+          onClick={() => navigate("/claims")}
+        />
+        <DashboardStatCard
+          title="Pending"
+          value={data.pendingClaims}
+          onClick={() => navigate("/claims")}
+        />
+        <DashboardStatCard
+          title="Approved"
+          value={data.approvedClaims}
+          onClick={() => navigate("/claims")}
+        />
+        <DashboardStatCard
+          title="Rejected"
+          value={data.rejectedClaims}
+          onClick={() => navigate("/claims")}
+        />
+      </div>
+      
       {/* Charts */}
-      <div style={{ display: "flex", gap: "30px", marginTop: "30px"}}>
+      <div style={chartGridStyle}>
         {/* Bar Chart for Claims by State */}
-        < div style = {chartBox}> 
-          <h3>Claims by State</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={data.claimsByState}>
-              <XAxis dataKey="state" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="count" fill="#2563eb" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+        <div style={chartCardStyle}>
+          <div style={chartHeaderStyle}>
+            <h3 style={chartTitleStyle}>Claims by State</h3>
+            <button onClick={() => navigate("/claims")} style={chartLinkButtonStyle}>
+                Open Claims
+              </button>
+          </div>
+
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={data.claimsByState}>
+                <XAxis dataKey="state" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="count" fill="#2563eb" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
 
         {/* Pie Chart for Internal vs External Claims */}
-        <div style={chartBox}>
-          <h3>Internal vs External Claims</h3>
-          <ResponsiveContainer width="100%" height={300}>
+        <div style={chartCardStyle}>
+          <div style={chartHeaderStyle}>
+            <h3 style={chartTitleStyle}>Internal vs External</h3>
+          </div>
+
+          <ResponsiveContainer width="100%" height={320}>
             <PieChart>
               <Pie
                 data={pieData}
@@ -91,9 +121,6 @@ function DashboardPage() {
                 outerRadius={100}
                 label
               >
-                {pieData.map((entry, index) => (
-                  <Cell key={index} fill={COLORS[index]} />
-                ))}
               </Pie>
               <Tooltip />
             </PieChart>
@@ -104,35 +131,104 @@ function DashboardPage() {
   );
 }
 
-function Card({ title, value }) {
+// Clickable dashboard KPI card
+function DashboardStatCard({ title, value, onClick }) {
   return (
-    <div style={cardStyle}>
-      <h4>{title}</h4>
-      <p style={{ fontSize: "24px", fontWeight: "bold" }}>{value}</p>
-    </div>
+    <button onClick={onClick} style={statCardStyle}>
+      <span style={statTitleStyle}>{title}</span>
+      <span style={statValueStyle}>{value}</span>
+    </button>
   );
 }
 
-const cardContainer = {
+const pageStyle = {
+  padding: "24px"
+};
+
+const headerRowStyle = {
   display: "flex",
-  gap: "20px",
-  marginTop: "20px",
+  justifyContent: "space-between",
+  alignItems: "flex-start",
+  gap: "16px",
+  marginBottom: "24px",
+  flexWrap: "wrap"
 };
 
-const cardStyle = {
-  flex: 1,
-  backgroundColor: "#f3f4f6",
-  padding: "20px",
-  borderRadius: "10px",
-  boxShadow: "0 2px 6px rgba(0,0,0,0.1)"
+const chartGridStyle = {
+  display: "grid",
+  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+  gap: "20px"
 };
 
-const chartBox = {
-  flex: 1,
-  backgroundColor: "#f3f4f6",
+const statCardStyle = {
+  backgroundColor: "white",
+  border: "1px solid #e5e7eb",
+  borderRadius: "12px",
   padding: "20px",
-  borderRadius: "10px",
-  boxShadow: "0 2px 6px rgba(0,0,0,0.1)"
+  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  gap: "10px",
+  cursor: "pointer"
+};
+
+const statTitleStyle = {
+  fontSize: "14px",
+  color: "#6b7280",
+  fontWeight: 500
+};
+
+const statValueStyle = {
+  fontSize: "30px",
+  fontWeight: 700,
+  color: "#111827"
+};
+
+const chartCardStyle = {
+  backgroundColor: "white",
+  border: "1px solid #e5e7eb",
+  borderRadius: "12px",
+  padding: "20px",
+  boxShadow: "0 2px 8px rgba(0,0,0,0.05)"
+};
+
+const chartHeaderStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: "12px",
+  gap: "12px"
+};
+
+const chartTitleStyle = {
+  margin: 0
+};
+
+const pageTitleStyle = {
+  margin: 0,
+  marginBottom: "6px"
+};
+
+const subTextStyle = {
+  margin: 0,
+  color: "#6b7280"
+};
+
+const summaryGridStyle = {
+  display: "grid",
+  gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+  gap: "16px",
+  marginBottom: "20px"
+};
+
+const chartLinkButtonStyle = {
+  padding: "8px 12px",
+  backgroundColor: "#eff6ff",
+  color: "#2563eb",
+  border: "1px solid #bfdbfe",
+  borderRadius: "8px",
+  cursor: "pointer"
 };
 
 export default DashboardPage;

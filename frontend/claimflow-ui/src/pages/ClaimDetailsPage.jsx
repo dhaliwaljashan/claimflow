@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { RESOLUTION_STATUS_OPTIONS } from "../utils/claimOptions";
 import api from "../api/axios";
 
 function ClaimDetailsPage() {
@@ -197,9 +198,11 @@ return (
                         onChange={handleErrorInputChange}
                         style={{...inputStyle, width: "100%"}}
                     >
-                        <option value="Open">Open</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="Resolved">Resolved</option>
+                        {RESOLUTION_STATUS_OPTIONS.map((status) => (
+                            <option key={status} value={status}>
+                            {status}
+                            </option>
+                        ))}
                     </select>
                 </div>
 
@@ -241,9 +244,11 @@ return (
                                         onChange={(e) => handleResolutionChange(item.claimErrorId, e.target.value)}
                                         style={{padding: "8px"}}
                                     >
-                                        <option value="Open">Open</option>      
-                                        <option value="In Progress">In Progress</option>
-                                        <option value="Resolved">Resolved</option>
+                                        {RESOLUTION_STATUS_OPTIONS.map((status) => (
+                                            <option key={status} value={status}>
+                                            {status}
+                                            </option>
+                                        ))}
                                     </select>
                                 </td>
                             </tr>
