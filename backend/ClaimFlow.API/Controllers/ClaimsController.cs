@@ -127,6 +127,14 @@ namespace ClaimFlow.API.Controllers
 
             _context.Claims.Add(claim);
             await _context.SaveChangesAsync();
+            await AddAuditLogAsync(
+                claim.CreatedByUserId,
+                claim.ClaimId,
+                "Create",
+                "Claim",
+                claim.ClaimId,
+                $"Claim {claim.ClaimId} was created."
+                );
 
             var response = new ClaimResponseDto
             {
@@ -174,6 +182,16 @@ namespace ClaimFlow.API.Controllers
             claim.CreatedByUserId = updateClaimDto.CreatedByUserId;
             claim.UpdatedAt = DateTime.UtcNow;
             await _context.SaveChangesAsync();
+
+            await AddAuditLogAsync(
+                claim.CreatedByUserId,
+                claim.ClaimId,
+                "Update",
+                "Claim",
+                claim.ClaimId,
+                $"Claim {claim.ClaimId} was updated."
+                );
+
             var response = new ClaimResponseDto
             {
                 ClaimId = claim.ClaimId,
@@ -196,6 +214,8 @@ namespace ClaimFlow.API.Controllers
         public async Task<IActionResult> DeleteClaim(int id)
         {
             var claim = await _context.Claims.FindAsync(id);
+            var deletedCLaimId = claim.ClaimId;
+            var deletedByUserId = claim.CreatedByUserId;
 
             if (claim == null)
             {
@@ -205,7 +225,34 @@ namespace ClaimFlow.API.Controllers
             _context.Claims.Remove(claim);
             await _context.SaveChangesAsync();
 
+            await AddAuditLogAsync(
+                deletedByUserId,
+                deletedCLaimId,
+                "Delete",
+                "Claim",
+                deletedCLaimId,
+                $"Claim {deletedCLaimId} was deleted."
+                );
+
+
             return Ok(new { message = $"Claim with ID {id} has been deleted." });
+        }
+
+        private async Task AddAuditLogAsync(int userId, int? claimId, string actionType, string entityName, int entityId, string description)
+        {
+            var auditLog = new Models.AuditLog
+            {
+                UserId = userId,
+                ClaimId = claimId,
+                ActionType = actionType,
+                EntityName = entityName,
+                EntityId = entityId,
+                Description = description,
+                Timestamp = DateTime.UtcNow
+            };
+
+            _context.AuditLogs.Add(auditLog);
+            await _context.SaveChangesAsync();
         }
     }
 }

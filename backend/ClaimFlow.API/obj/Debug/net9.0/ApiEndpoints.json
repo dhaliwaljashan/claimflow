@@ -1,5 +1,31 @@
 [
   {
+    "ContainingType": "ClaimFlow.API.Controllers.AuditLogsController",
+    "Method": "GetAuditLogsByClaimId",
+    "RelativePath": "api/AuditLogs/by-claim/{claimId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "claimId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ClaimFlow.API.DTOs.AuditLogResponseDto, ClaimFlow.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "ClaimFlow.API.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",

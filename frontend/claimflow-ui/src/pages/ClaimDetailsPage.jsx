@@ -18,6 +18,8 @@ function ClaimDetailsPage() {
     const [notes, setNotes] = useState([]);
     const [newNote, setNewNote] = useState("");
 
+    const [auditLogs, setAuditLogs] = useState([]);
+
     const [newError, setNewError] = useState({
         errorCode: "",
         errorType: "",
@@ -27,15 +29,17 @@ function ClaimDetailsPage() {
 
     const fetchClaimDetails = async () => {
         try {
-            const [claimResponse, errorsResponse, notesResponse] = await Promise.all([
+            const [claimResponse, errorsResponse, notesResponse, auditLogsResponse] = await Promise.all([
                 api.get(`/claims/${id}`),
                 api.get(`/claimerrors/by-claim/${id}`),
-                api.get(`/claimnotes/by-claim/${id}`)
+                api.get(`/claimnotes/by-claim/${id}`),
+                api.get(`/auditlogs/by-claim/${id}`)
             ]);
             
             setClaim(claimResponse.data);
             setErrors(errorsResponse.data);
             setNotes(notesResponse.data);
+            setAuditLogs(auditLogsResponse.data);
         } catch (err) {
             setErrorMessage("Failed to fetch claim details.");
         } finally {
@@ -318,6 +322,24 @@ function ClaimDetailsPage() {
                             </div>
                         ))}
                     </div>
+                )}
+            </div>
+
+            <div style={sectionBox}>
+                <h3>Audit History</h3>
+                {auditLogs.length === 0 ? (
+                    <p>No audit history found.</p>
+                    ) : (
+                    <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                        {auditLogs.map((log) => (
+                            <div key={log.auditLogId} style={noteCardStyle}>
+                                <p style={{ margin: 0, marginBottom: "8px" }}>{log.description}</p>
+                                <small style={{ color: "#6b7280" }}>
+                                    {log.userName} • {log.actionType} • {new Date(log.timestamp).toLocaleString()}
+                                </small>
+                            </div>
+                        ))}
+                    </div>                        
                 )}
             </div>
         </div>

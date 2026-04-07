@@ -127,3 +127,24 @@
 - Polished dashboard layout
 - Simplified pie chart setup using fill values in pieData
 - Kept dashboard navigation simple using existing navbar
+
+## Day 24
+- Enhanced Claims page with search and filtering
+- Added search by Claim ID, Member ID, and Provider ID
+- Extended backend claims API to support additional query parameters
+- Added client-side pagination for claims list
+- Improved list usability with structured browsing and status badges
+
+## Day 25
+- Added Claim Notes backend model, DTOs, controller, and database migration
+- Implemented secure notes API for retrieving and adding notes by claim
+- Extended Claim Details page to display notes history
+- Added frontend note creation flow with user and timestamp display
+- Separated claim notes from audit tracking for a cleaner domain design
+
+## Day 26
+- Enhanced audit logging for claims by adding claim-specific tracking fields
+- Implemented backend audit log creation for claim create, update, and delete actions
+- Added secure API to retrieve audit history by claim
+- Extended Claim Details page to display audit history
+- Clearly separated user notes from system audit trail
