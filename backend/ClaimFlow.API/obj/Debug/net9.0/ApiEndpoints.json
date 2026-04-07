@@ -109,6 +109,58 @@
     ]
   },
   {
+    "ContainingType": "ClaimFlow.API.Controllers.ClaimNotesController",
+    "Method": "CreateClaimNote",
+    "RelativePath": "api/ClaimNotes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createClaimNoteDto",
+        "Type": "ClaimFlow.API.DTOs.CreateClaimNoteDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ClaimFlow.API.DTOs.ClaimNoteResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ClaimFlow.API.Controllers.ClaimNotesController",
+    "Method": "GetNotesByClaimId",
+    "RelativePath": "api/ClaimNotes/by-claim/{claimId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "claimId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ClaimFlow.API.DTOs.ClaimNoteResponseDto, ClaimFlow.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "ClaimFlow.API.Controllers.ClaimsController",
     "Method": "GetClaims",
     "RelativePath": "api/Claims",

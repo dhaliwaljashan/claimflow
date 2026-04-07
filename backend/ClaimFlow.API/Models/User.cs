@@ -11,5 +11,6 @@
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public ICollection<Claim> Claims { get; set; } = new List<Claim>();
         public ICollection<AuditLog> AuditLogs { get; set; } = new List<AuditLog>();
+        public ICollection<ClaimNote> ClaimNotes { get; set; } = new List<ClaimNote>();
     }  
 }

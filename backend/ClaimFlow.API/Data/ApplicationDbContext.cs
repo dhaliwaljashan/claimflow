@@ -13,6 +13,7 @@ namespace ClaimFlow.API.Data
         public DbSet<ClaimError> ClaimErrors { get; set; }
         public DbSet<StateRule> StateRules { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
+        public DbSet<ClaimNote> ClaimNotes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,6 +40,18 @@ namespace ClaimFlow.API.Data
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
+
+            modelBuilder.Entity<ClaimNote>()
+                .HasOne(cn => cn.Claim)
+                .WithMany(c => c.ClaimNotes)
+                .HasForeignKey(cn => cn.ClaimId)
+                .OnDelete(DeleteBehavior.Cascade); // If a Claim is deleted → ALL its ClaimNotes are automatically deleted
+
+            modelBuilder.Entity<ClaimNote>()
+                .HasOne(cn => cn.User)
+                .WithMany(c => c.ClaimNotes)
+                .HasForeignKey(cn => cn.UserId)
+                .OnDelete(DeleteBehavior.Restrict); // You CANNOT delete a User if they have ClaimNotes
         }
     }
 }

@@ -17,5 +17,6 @@
         // Navigation property
         public User? CreatedByUser { get; set; }
         public ICollection<ClaimError> ClaimErrors { get; set; } = new List<ClaimError>();
+        public ICollection<ClaimNote> ClaimNotes { get; set; } = new List<ClaimNote>();
     }
 }
