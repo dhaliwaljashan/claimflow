@@ -22,4 +22,20 @@ api.interceptors.request.use(
     }
 );
 
+api.interceptors.response.use(
+    (response) => response, // If everything is OK → return response
+    (error) => {
+        if(error.response?.status === 401) {
+            // clear session data
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+
+            if (window.location.pathname !== "/login") {
+                window.location.href = "/login";
+            }
+        }
+        return Promise.reject(error); // returns error to calling component
+    }
+);
+
 export default api;

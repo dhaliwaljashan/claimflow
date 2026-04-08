@@ -103,7 +103,7 @@ const handleDeleteClaim  = async (claimId) => {
   }
 };
 
-const paginatedClaims = useMemo(() => {  // Recalculate only when claims or page changes”
+const paginatedClaims = useMemo(() => {  // Recalculate only when claims or page changes”, useMemo = remember value
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   return claims.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 }, [claims, currentPage]);

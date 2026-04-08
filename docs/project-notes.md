@@ -148,3 +148,9 @@
 - Added secure API to retrieve audit history by claim
 - Extended Claim Details page to display audit history
 - Clearly separated user notes from system audit trail
+
+## Day 27
+- Implemented automatic frontend logout based on JWT expiry
+- Added global 401 handling in Axios to clear session and redirect to login
+- Improved authentication flow for expired sessions
+- Polished README with project overview, architecture, features, and run steps
