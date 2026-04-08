@@ -5,6 +5,29 @@
     "version": "v1"
   },
   "paths": {
+    "/api/AI/summarize-claim/{claimId}": {
+      "post": {
+        "tags": [
+          "AI"
+        ],
+        "parameters": [
+          {
+            "name": "claimId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AuditLogs/by-claim/{claimId}": {
       "get": {
         "tags": [

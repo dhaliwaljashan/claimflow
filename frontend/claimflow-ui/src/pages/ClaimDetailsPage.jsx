@@ -22,6 +22,9 @@ function ClaimDetailsPage() {
 
     const [auditLogs, setAuditLogs] = useState([]);
 
+    const [aiSummary, setAiSummary] = useState("");
+    const [summaryLoading, setSummaryLoading] = useState(false);
+
     const [newError, setNewError] = useState({
         errorCode: "",
         errorType: "",
@@ -159,6 +162,21 @@ function ClaimDetailsPage() {
             fetchClaimDetails();
         } catch(err) {
             setErrorMessage(err.response?.data?.message || "Failed to add note.");
+        }
+    };
+
+    const handleGenerateSummary = async () => {
+        setErrorMessage("");
+        setSuccessMessage("");
+        setSummaryLoading(true);
+
+        try {
+            const response = await api.post(`/ai/summarize-claim/${id}`);
+            setAiSummary(response.data.summary);
+        } catch (err) {
+            setErrorMessage(err.response?.data?.message || "Failed to generate AI summary.");
+        } finally {
+            setSummaryLoading(false);
         }
     };
 
@@ -341,6 +359,24 @@ function ClaimDetailsPage() {
                             </div>
                         ))}
                     </div>
+                )}
+            </div>
+
+            <div style={sectionBox}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+                    <h3 style={{ margin: 0 }}>AI Summary</h3>
+
+                    <button onClick={handleGenerateSummary} disabled={summaryLoading} style={buttonStyle}>
+                    {summaryLoading ? "Generating..." : "Generate AI Summary"}
+                    </button>
+                </div>
+
+                {aiSummary ? (
+                    <div style={noteCardStyle}>
+                    <p style={{ margin: 0 }}>{aiSummary}</p>
+                    </div>
+                ) : (
+                    <p>No AI summary generated yet.</p>
                 )}
             </div>
 

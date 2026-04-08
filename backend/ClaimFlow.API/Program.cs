@@ -1,3 +1,4 @@
+using ClaimFlow.API.AI;
 using ClaimFlow.API.Auth;
 using ClaimFlow.API.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -16,6 +17,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 
 builder.Services.AddScoped<JwtTokenHelper>();
+
+builder.Services.AddHttpClient<IAIService, AIService>();
 
 var jwtKey = builder.Configuration["Jwt:Key"];
 var jwtIssuer = builder.Configuration["Jwt:Issuer"];

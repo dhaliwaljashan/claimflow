@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "ClaimFlow.API.Controllers.AIController",
+    "Method": "SummarizeClaim",
+    "RelativePath": "api/AI/summarize-claim/{claimId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "claimId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ClaimFlow.API.Controllers.AuditLogsController",
     "Method": "GetAuditLogsByClaimId",
     "RelativePath": "api/AuditLogs/by-claim/{claimId}",
