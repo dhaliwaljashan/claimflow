@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { RESOLUTION_STATUS_OPTIONS } from "../utils/claimOptions";
+import AlertMessage from "../components/lertMessage";
 import api from "../api/axios";
 
 function ClaimDetailsPage() {
@@ -13,6 +14,7 @@ function ClaimDetailsPage() {
     const [loading, setLoading] = useState(true);
     const [errors, setErrors] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
     const [deleting, setDeleting] = useState(false);
 
     const [notes, setNotes] = useState([]);
@@ -62,6 +64,7 @@ function ClaimDetailsPage() {
     const handleAddError = async (e) => {
         e.preventDefault();
         setErrorMessage("");
+        setSuccessMessage("");
 
         if (!newError.errorCode || !newError.errorType || !newError.description) {
         setErrorMessage("Please fill in all error fields.");
@@ -76,6 +79,8 @@ function ClaimDetailsPage() {
             description: newError.description,
             resolutionStatus: newError.resolutionStatus
             });
+            
+            setSuccessMessage("Claim error added successfully.");
 
             setNewError({
                 errorCode: "",
@@ -92,10 +97,13 @@ function ClaimDetailsPage() {
     };
 
     const handleResolutionChange = async (claimErrorId, resolutionStatus) => {
+        setErrorMessage("");
+        setSuccessMessage("");
         try {
             await api.put(`/claimerrors/${claimErrorId}/resolution-status`, {
                 resolutionStatus
             });
+            setSuccessMessage("Resolution status updated successfully.");
 
             fetchClaimDetails(); // refresh to show updated status
         } catch (err) {
@@ -114,6 +122,7 @@ function ClaimDetailsPage() {
         }
 
         setErrorMessage("");
+        setSuccessMessage("");
         setDeleting(true);
 
         try{
@@ -131,6 +140,7 @@ function ClaimDetailsPage() {
     const handleAddNote = async (e) => {
         e.preventDefault();
         setErrorMessage("");
+        setSuccessMessage("");
 
         if(!newNote.trim()) {
             setErrorMessage("Note text is required,");
@@ -143,6 +153,7 @@ function ClaimDetailsPage() {
                 userId:user?.userId,
                 noteText:newNote
             });
+            setSuccessMessage("Note added successfully.");
 
             setNewNote("");
             fetchClaimDetails();
@@ -160,8 +171,20 @@ function ClaimDetailsPage() {
     }
 
     return (
-        <div style={{ padding: "20px" }}>
+        <div style={detailsPageStyle}>
             <h2>Claim Details</h2>
+            <AlertMessage
+                type="success"
+                message={successMessage}
+                onClose={() => setSuccessMessage("")}
+                />
+
+                <AlertMessage
+                type="error"
+                message={errorMessage}
+                onClose={() => setErrorMessage("")}
+                />
+
             {claim && (
                 <div style={sectionBox}>
                     <p><strong>Claim ID:</strong> {claim.claimId}</p>
@@ -242,10 +265,6 @@ function ClaimDetailsPage() {
                         Add Error
                     </button>
                 </form>
-
-                {errorMessage && (
-                    <p style={{ color: "red", marginTop: "15px" }}>{errorMessage}</p>
-                )}  
             </div>
 
             <div style={sectionBox}>
@@ -345,6 +364,12 @@ function ClaimDetailsPage() {
         </div>
     );
 }
+
+const detailsPageStyle = {
+  padding: "20px",
+  maxWidth: "1100px",
+  margin: "0 auto"
+};
 
 const sectionBox = {
     backgroundColor: "#f3f4f6",

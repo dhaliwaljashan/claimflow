@@ -2,6 +2,7 @@ import {useEffect, useMemo, useState} from "react";
 import {Link} from "react-router-dom";
 import {useAuth} from "../context/AuthContext";
 import { STATE_OPTIONS, STATUS_OPTIONS } from "../utils/claimOptions";
+import AlertMessage from "../components/lertMessage";
 import api from "../api/axios";
 
 const ITEMS_PER_PAGE = 5;
@@ -11,7 +12,8 @@ function ClaimsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const {user} = useAuth();
-
+  const [successMessage, setSuccessMessage] = useState("");
+  
   const [filters, setFilters] = useState({
     claimId: "",
     memberId: "",
@@ -25,6 +27,7 @@ function ClaimsPage() {
   const fetchClaims = async (appliedFilters = filters) => {
     setLoading(true);
     setError("");
+    setSuccessMessage("");
 
   try {
     const queryParams = new URLSearchParams(); // creates an object to build query string for API request
@@ -97,6 +100,7 @@ const handleDeleteClaim  = async (claimId) => {
 
   try{
     await api.delete(`/claims/${claimId}`);
+    setSuccessMessage("Claim deleted successfully.");
     fetchClaims(filters);
   } catch(err) {
     setError(err.response?.data?.message || "Failed to delete claim.");
@@ -214,11 +218,17 @@ const getStatusStyle = (status) => {
         </div>
       </div>
 
-      {error && (
-        <p style={{ color: "red", padding: "10px" }}>
-          {error}
-        </p>
-      )}
+      <AlertMessage
+        type="success"
+        message={successMessage}
+        onClose={() => setSuccessMessage("")}
+      />
+
+      <AlertMessage
+        type="error"
+        message={error}
+        onClose={() => setError("")}
+      />
 
       {!loading && claims.length === 0 ? (
         <p style={{ padding: "20px" }}>No claims found.</p>
@@ -324,7 +334,8 @@ const filterContainerStyle = {
 const filterFieldStyle = {
   display: "flex",
   flexDirection: "column",
-  minWidth: "200px"
+  minWidth: "200px",
+  flex: "1 1 180px",
 };
 
 const inputStyle = {
@@ -366,7 +377,8 @@ const tdStyle = {
 const actionCellStyle = {
   display: "flex",
   gap: "10px",
-  alignItems: "center"
+  alignItems: "center",
+  flexWrap: "wrap"
 };
 
 const tableDeleteButtonStyle = {

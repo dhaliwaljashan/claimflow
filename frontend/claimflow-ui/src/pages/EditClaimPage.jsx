@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import api from "../api/axios";
+import AlertMessage from "../components/lertMessage";
 import {
   CLAIM_TYPE_OPTIONS,
   STATE_OPTIONS,
@@ -25,6 +26,7 @@ function EditClaimPage() {
         createdByUserId: user?.userId
     });
 
+    const [successMessage, setSuccessMessage] = useState("");
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [error, setError] = useState("");
@@ -71,6 +73,7 @@ function EditClaimPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();  // stops page reload on submitting the form
         setError("");
+        setSuccessMessage("");
 
         // Basic client-side validation
         if (!formData.memberId.trim()) {
@@ -100,7 +103,11 @@ function EditClaimPage() {
                 ...formData,
                 amount: Number(formData.amount),
             });
-            navigate(`/claims/${id}`); // Redirect to claim details page after saving
+            setSuccessMessage("Claim updated successfully.");
+
+            setTimeout(() => {
+              navigate(`/claims/${id}`);
+            }, 1000); // Redirect to claim details page after saving
         } catch (err) {
             console.error("Error updating claim:", err);
             setError(err.response?.data?.message || "Failed to update claim. Please try again.");
@@ -118,6 +125,18 @@ function EditClaimPage() {
       <div style={formCardStyle}>
         <h2 style={titleStyle}>Edit Claim</h2>
 
+        <AlertMessage
+          type="success"
+          message={successMessage}
+          onClose={() => setSuccessMessage("")}
+        />
+
+        <AlertMessage
+          type="error"
+          message={error}
+          onClose={() => setError("")}
+        />
+        
         <form onSubmit={handleSubmit}>
           <div style={formGridStyle}>
             <div style={fieldStyle}>
@@ -236,8 +255,6 @@ function EditClaimPage() {
               Internal Claim
             </label>
           </div>
-
-          {error && <p style={errorStyle}>{error}</p>}
 
           <div style={buttonRowStyle}>
             <button type="submit" disabled={saving} style={primaryButtonStyle}>

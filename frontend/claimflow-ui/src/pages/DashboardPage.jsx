@@ -39,10 +39,6 @@ function DashboardPage() {
      return <p style={{ padding: "20px" }}>Loading dashboard...</p>;
   }
 
- if (error) {
-    return <p style={{ padding: "20px", color: "red" }}>{error} </p>
-  }
-
   if (!data) {
     return <p style={{ padding: "20px" }}>No dashboard data available.</p>;
   }

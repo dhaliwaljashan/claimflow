@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import AlertMessage  from "../components/lertMessage";
 import api from "../api/axios";
 import {
   CLAIM_TYPE_OPTIONS,
@@ -11,7 +12,7 @@ import {
 function CreateClaimPage() {
   const navigate = useNavigate();
   const { user } = useAuth();
-
+  
   const [formData, setFormData] = useState({
     memberId: "",
     providerId: "",
@@ -24,6 +25,7 @@ function CreateClaimPage() {
     createdByUserId: user?.userId
   });
 
+  const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -39,6 +41,7 @@ function CreateClaimPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();  // prevents the browser from reloading the page on form submission
     setError("");
+    setSuccessMessage("");
 
     // Basic client-side validation to ensure required fields are filled
     if(!formData.memberId.trim()) {
@@ -69,7 +72,11 @@ function CreateClaimPage() {
       amount: Number(formData.amount),
       });
 
-      navigate("/claims");
+      setSuccessMessage("Claim created successfully.");
+
+      setTimeout(() => {
+        navigate("/claims");
+      }, 1000);
     } catch (err) {
       console.error("Error creating claim:", err);
       setError(err.response?.data?.message || "Failed to create claim. Please try again.");
@@ -83,6 +90,18 @@ function CreateClaimPage() {
     <div style={pageOuterStyle}>
       <div style={formCardStyle}>
         <h2 style={titleStyle}>Create Claim</h2>
+        
+        <AlertMessage
+          type="success"
+          message={successMessage}
+          onClose={() => setSuccessMessage("")}
+        />
+
+        <AlertMessage
+          type="error"
+          message={error}
+          onClose={() => setError("")}
+        />
         
         <form onSubmit={handleSubmit}>
           <div style={formGridStyle}>
@@ -205,8 +224,6 @@ function CreateClaimPage() {
               Internal Claim
             </label>
           </div>
-
-          {error && <p style={errorStyle}>{error}</p>}
           
           <div style={buttonRowStyle}>
               <button type="submit" disabled={loading} style={primaryButtonStyle}>
